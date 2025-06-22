@@ -1,0 +1,16 @@
+[package]
+name = "badlinkage"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+aws-lc-rs = "1.13.1"
+deno_core = "0.351.0"
+serde = { version = "1.0.219", features = ["derive"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = 'z'
+split-debuginfo = "packed"
+debug = "line-tables-only"

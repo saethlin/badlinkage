@@ -12,39 +12,15 @@ struct OpDecl {
     slow_fn: fn(),
 }
 
-pub fn op_crypto_sign_key() -> ::deno_core::_ops::OpDecl {
+pub fn op_crypto_sign_key() -> OpDecl {
     pub struct op_crypto_sign_key;
     impl op_crypto_sign_key {
-        const DECL: ::deno_core::_ops::OpDecl = ::deno_core::_ops::OpDecl::new_internal_op2(
-            {
-                const LITERAL: &'static [u8] = "op_crypto_sign_key".as_bytes();
-                const STR: ::deno_core::v8::OneByteConst =
-                    ::deno_core::FastStaticString::create_external_onebyte_const(LITERAL);
-                let s: &'static ::deno_core::v8::OneByteConst = &STR;
-                ("op_crypto_sign_key", ::deno_core::FastStaticString::new(s))
-            },
-            true,
-            false,
-            false,
-            2usize as u8,
-            false,
+        const DECL: OpDecl = OpDecl {
             unsafe { transmute(Self::v8_fn_ptr as fn(*const FunctionCallbackInfo)) },
-            unsafe { transmute(Self::v8_fn_ptr_metrics as fn(*const FunctionCallbackInfo)) },
-            ::deno_core::AccessorType::None,
-            None,
-            None,
-            ::deno_core::OpMetadata {
-                ..::deno_core::OpMetadata::default()
-            },
-        );
-    }
-    impl op_crypto_sign_key {
+        }
         fn v8_fn_ptr<'s>(info: *const deno_core::v8::FunctionCallbackInfo) {
             Self::call(std::hint::black_box(None));
         }
-        fn v8_fn_ptr_metrics<'s>(_info: *const deno_core::v8::FunctionCallbackInfo) {}
-    }
-    impl op_crypto_sign_key {
         #[inline(never)]
         pub fn call(args: Option<CryptoHash>) {
             let hash: HmacAlgorithm = args.unwrap().into();
@@ -53,42 +29,15 @@ pub fn op_crypto_sign_key() -> ::deno_core::_ops::OpDecl {
     }
     op_crypto_sign_key::DECL
 }
-pub fn op_crypto_generate_key() -> ::deno_core::_ops::OpDecl {
+pub fn op_crypto_generate_key() -> OpDecl {
     pub struct op_crypto_generate_key;
     impl op_crypto_generate_key {
-        const DECL: ::deno_core::_ops::OpDecl = ::deno_core::_ops::OpDecl::new_internal_op2(
-            {
-                const LITERAL: &'static [u8] = "op_crypto_generate_key".as_bytes();
-                const STR: ::deno_core::v8::OneByteConst =
-                    ::deno_core::FastStaticString::create_external_onebyte_const(LITERAL);
-                let s: &'static ::deno_core::v8::OneByteConst = &STR;
-                (
-                    "op_crypto_generate_key",
-                    ::deno_core::FastStaticString::new(s),
-                )
-            },
-            true,
-            false,
-            false,
-            2usize as u8,
-            false,
-            unsafe { transmute(Self::v8_fn_ptr as fn(*const FunctionCallbackInfo)) },
-            unsafe { transmute(Self::v8_fn_ptr_metrics as fn(*const FunctionCallbackInfo)) },
-            ::deno_core::AccessorType::None,
-            None,
-            None,
-            ::deno_core::OpMetadata {
-                ..::deno_core::OpMetadata::default()
-            },
-        );
-    }
-    impl op_crypto_generate_key {
+        const DECL: OpDecl = OpDecl {
+            slow_fn: unsafe { transmute(Self::v8_fn_ptr as fn(*const FunctionCallbackInfo)) },
+        };
         fn v8_fn_ptr<'s>(info: *const deno_core::v8::FunctionCallbackInfo) {
             Self::call(std::hint::black_box(ShaHash::Sha1))
         }
-        fn v8_fn_ptr_metrics<'s>(_info: *const deno_core::v8::FunctionCallbackInfo) {}
-    }
-    impl op_crypto_generate_key {
         #[inline(never)]
         pub fn call(hash: ShaHash) {
             let hash = match hash {
